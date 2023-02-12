@@ -2,6 +2,7 @@ package com.example.nicocommunity.Service;
 
 import com.example.nicocommunity.Mapper.AdminMapper;
 import com.example.nicocommunity.domain.Admin;
+import com.example.nicocommunity.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,7 +49,20 @@ public class AdminServiceImpl implements AdminService  {
         return adminMapper.getSwiperImg();
     }
 
+    @Override
+    public User findUserById(Long userId) {
+        return adminMapper.findUserById(userId);
+    }
 
+    @Override
+    public int addUser(User user) {
+        return adminMapper.addUser(user);
+    }
+
+    @Override
+    public User findUserByPhone(String userPhone) {
+        return adminMapper.findUserByPhone(userPhone);
+    }
 
 
 }

@@ -1,6 +1,7 @@
 package com.example.nicocommunity.Mapper;
 
 import com.example.nicocommunity.domain.Admin;
+import com.example.nicocommunity.domain.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -36,6 +37,18 @@ public interface AdminMapper {
      * */
     @Select("SELECT * FROM `t_swiper`")
     List<Map<String,Object>> getSwiperImg();
+
+
+    @Select("select * from t_user where userid = #{userId}")
+    User findUserById(Long userId);
+
+    /**插入新用户*/
+    @Insert("INSERT INTO t_user VALUES (#{userId},#{userName},#{petName},#{userPhone},#{signTime})")
+    int addUser(User user);
+
+    /**根据手机号判断是否注册*/
+    @Select("SELECT * FROM `t_user` where userPhone = #{userPhone}")
+    User findUserByPhone(String userPhone);
 
 
 }

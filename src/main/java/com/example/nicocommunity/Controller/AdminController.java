@@ -15,10 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**Controller层书写规范
  *1.@RequestMapping("/dee")注解 即url路径
@@ -67,6 +64,15 @@ public class AdminController {
 
         }
     }
+
+    @GetMapping("/parseToken")
+    @ResponseBody
+    public String parseToken(@RequestParam("token") String token){
+        String id = tokenUtil.parseToken(token);
+        return JSON.toJSONString(id);
+    }
+
+
     /**用户请求数据请求  需要验证token后才能响应请求并返回数据。*/
 //    @UserLoginToken  //需要验证
     @PassToken     //无需验证
@@ -101,8 +107,9 @@ public class AdminController {
     @PostMapping("/insert")
     @ResponseBody
     public String insertAdmin(@RequestBody Admin admin){
+        admin.setAdd_time(new Date());
         int result = adminService.insertAdmin(admin);
-        return JSON.toJSONString("ok");
+        return JSON.toJSONString(admin);
     }
 
 

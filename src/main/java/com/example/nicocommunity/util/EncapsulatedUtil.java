@@ -25,4 +25,22 @@ public class EncapsulatedUtil {
         jsonObject.put("meta",meta);
         return jsonObject;
     }
+
+    public Object encapsObject(Object obj){
+        //封装数据发给前端。
+        JSONObject jsonObject = new JSONObject();
+        //message
+        JSONObject message = new JSONObject();
+        message.put("data",obj);
+        //meta
+        JSONObject meta = new JSONObject();
+        meta.put("msg","获取成功");
+        meta.put("status",200);
+
+        jsonObject.put("message",message);
+        jsonObject.put("meta",meta);
+        return jsonObject;
+    }
+
+
 }

@@ -13,7 +13,8 @@ public class Good {
     private Integer good_id;
     private String good_name;
     private Integer cat_id;
-    private Integer good_price;
+
+    private Double good_price;
     private Integer good_num;
     private String good_big_logo;
     private Integer cat_one_id;
@@ -59,11 +60,11 @@ public class Good {
         this.cat_id = cat_id;
     }
 
-    public Integer getGood_price() {
+    public Double getGood_price() {
         return good_price;
     }
 
-    public void setGood_price(Integer good_price) {
+    public void setGood_price(Double good_price) {
         this.good_price = good_price;
     }
 

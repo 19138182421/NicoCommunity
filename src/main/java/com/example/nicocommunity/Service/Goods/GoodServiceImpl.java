@@ -5,6 +5,7 @@ import com.example.nicocommunity.domain.Good;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -18,8 +19,8 @@ public class GoodServiceImpl implements GoodService {
     private GoodMapper goodMapper;
 
     @Override
-    public List<Map<String, Object>> getGoodsList(Integer good_id) {
-        return goodMapper.getGoodsList(good_id);
+    public List<Good> getGoodsList(Integer cat_id) {
+        return goodMapper.getGoodsList(cat_id);
     }
 
     @Override
@@ -40,5 +41,31 @@ public class GoodServiceImpl implements GoodService {
     @Override
     public List<Map<String, Object>> getGood(String query) {
         return goodMapper.getGood(query);
+    }
+
+    @Override
+    public List<Map<String, Object>> getQuery(String query) {
+        return goodMapper.getQuery(query);
+    }
+
+    @Override
+    public List<Good> getSuggestList(List<String> list) {
+        /**循环数组获取商品并存入list*/
+        List<Good> list1 = new ArrayList<Good>();
+        list.forEach((e)->{
+            list1.addAll(goodMapper.getGoodsList(Integer.valueOf(e)));
+        });
+//        System.out.println(list1);
+        return list1;
+    }
+
+    @Override
+    public List<Good> getGoodsListRandom() {
+        return goodMapper.getGoodsListRandom();
+    }
+
+    @Override
+    public List<Good> getNavGoods(Integer cat_id) {
+        return goodMapper.getNavGoods(cat_id);
     }
 }

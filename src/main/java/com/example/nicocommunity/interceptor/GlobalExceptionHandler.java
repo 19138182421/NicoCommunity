@@ -16,9 +16,13 @@ public class GlobalExceptionHandler {
     public Object handlerException(Exception e){
         String msg = e.getMessage();
         if (msg == null || msg.equals("")) {
-            msg = "服务器异常";
+            msg = "服务器异常sd";
         }
         JSONObject jsonObject = new JSONObject();
+        JSONObject meta = new JSONObject();
+        meta.put("msg","获取信息失败！");
+        meta.put("status",400);
+        jsonObject.put("meta",meta);
         jsonObject.put("message", msg);
         return jsonObject;
     }

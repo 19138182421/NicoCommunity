@@ -10,6 +10,7 @@ import com.example.nicocommunity.Service.AdminService;
 import com.example.nicocommunity.annotation.PassToken;
 import com.example.nicocommunity.annotation.UserLoginToken;
 import com.example.nicocommunity.domain.Admin;
+import com.example.nicocommunity.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -58,30 +59,29 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                     throw new RuntimeException("还未登录，请先登录");
                 }
                 // 从请求头的token中利用JWT 解析获取 token 中的 userId值
-                String adminId;
+                String userId;
                 try {
                     //解析token获取用户id
-                    adminId = JWT.decode(token).getAudience().get(0);
+                    userId = JWT.decode(token).getAudience().get(0);
                 } catch (JWTDecodeException j) {
                     throw new RuntimeException("401：无权限");
                 }
+//                System.out.println("用户id"+userId);
                 //验证用户是否已经注册
-                Admin admin = adminService.findAdminById(adminId);
-                if (admin == null) {
+                User user = adminService.findUserById(Long.valueOf(userId));
+//                System.out.println(user);
+                if (user == null) {
                     throw new RuntimeException("用户不存在，请先注册再重新登录");
                 }
                 // 验证 token中用户的密码是否正确。
                 //acceptExpiresAt()表示延续token的有效时长，单位为秒，类型为Long。
-                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(admin.getAdminPwd()))
+                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(user.getUserPhone()))
                                               .acceptExpiresAt(10)
                                              .build();
                 try {
                     jwtVerifier.verify(token);
                 } catch(TokenExpiredException e){
                     throw  new RuntimeException("Token已过期，请重新登录");
-                }
-                catch (JWTVerificationException e) {
-                    throw new RuntimeException("401");
                 }
                 //返回true表示token验证成功，开始响应用户请求。
                 return true;

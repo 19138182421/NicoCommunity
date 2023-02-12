@@ -1,5 +1,6 @@
 package com.example.nicocommunity;
 
+import com.example.nicocommunity.util.IdWorker;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,9 +13,14 @@ import java.sql.SQLException;
 @SpringBootTest
 class NicoCommunityApplicationTests {
 
+
     @Test
     void contextLoads() {
-
+       IdWorker idWorker = new IdWorker(2, 3);
+            long id = idWorker.nextId();
+            System.out.println(id);
+        long id1 = idWorker.nextId();
+        System.out.println(id1);
     }
 
     //数据源组件

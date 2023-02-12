@@ -11,7 +11,7 @@ import java.util.Map;
 public interface GoodService {
 
     /**获取商品列表*/
-    List<Map<String,Object>> getGoodsList(Integer cat_id);
+    List<Good> getGoodsList(Integer cat_id);
 
     /**获取商品详情*/
     Good getGoodDetail(Integer good_id);
@@ -24,4 +24,14 @@ public interface GoodService {
 
     /**获取搜索建议*/
     List<Map<String, Object>> getGood(String query);
+
+    List<Map<String, Object>> getQuery(String query);
+
+    /**根据分类id获取商品集合*/
+    List<Good> getSuggestList(List<String> list);
+
+    /**随机获取商品*/
+    List<Good> getGoodsListRandom();
+
+    List<Good> getNavGoods(Integer cat_id);
 }
