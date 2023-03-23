@@ -33,8 +33,15 @@ public class Good {
     private double good_weight;
     private String key_words;
     private Integer is_promote;
+    private String status;
 
+    public String getStatus() {
+        return status;
+    }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public Integer getGood_id() {
         return good_id;

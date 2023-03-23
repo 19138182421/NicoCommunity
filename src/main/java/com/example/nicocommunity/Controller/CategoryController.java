@@ -25,7 +25,7 @@ public class CategoryController {
     @Autowired
     private EncapsulatedUtil encapsulatedUtil;
 
-    @GetMapping("getcategory/{catPid}")
+    @GetMapping("/getcategory/{catPid}")
     public Object getCategory(@PathVariable("catPid") Integer catPid){
         List<Map<String, Object>> list = categoryService.getCategory(catPid);
 

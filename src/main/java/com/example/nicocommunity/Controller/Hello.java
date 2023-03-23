@@ -16,7 +16,7 @@ import java.util.Map;
 public class Hello {
     @GetMapping("/hello")
     public String helloSpringboot(){
-        return "hello啊,springboot";
+        return "hello啊awserdt awse,springboot";
     }
 //    public String helloSpringboot(@RequestHeader("userid") String userid){
 //        String userId = userid;

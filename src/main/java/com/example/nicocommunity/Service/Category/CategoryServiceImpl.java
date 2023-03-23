@@ -37,4 +37,9 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Map<String, Object>> getCategory(Integer catPid) {
         return categoryMapper.getCatItems(catPid);
     }
+
+    @Override
+    public List<Map<String, Object>> getCategoryById(String catId) {
+        return categoryMapper.getCategoryById(catId);
+    }
 }

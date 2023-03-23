@@ -11,9 +11,11 @@ import java.util.Date;
  * @author yang
  */
 public class Admin {
-    private Integer adminId;
-    private String adminName;
-    private String adminPwd;
+
+    private Long adminId;
+    private String adminname;
+    private String adminpwd;
+    private String avatar;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd HH:mm:ss")
@@ -28,27 +30,35 @@ public class Admin {
         this.add_time = add_time;
     }
 
-    public Integer getAdminId() {
+    public Long getAdminId() {
         return adminId;
     }
 
-    public void setAdminId(Integer adminId) {
+    public void setAdminId(Long adminId) {
         this.adminId = adminId;
     }
 
     public String getAdminName() {
-        return adminName;
+        return adminname;
     }
 
     public void setAdminName(String adminName) {
-        this.adminName = adminName;
+        this.adminname = adminName;
     }
 
     public String getAdminPwd() {
-        return adminPwd;
+        return adminpwd;
     }
 
     public void setAdminPwd(String adminPwd) {
-        this.adminPwd = adminPwd;
+        this.adminpwd = adminPwd;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }

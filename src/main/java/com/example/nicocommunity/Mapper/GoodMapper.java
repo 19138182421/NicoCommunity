@@ -16,8 +16,8 @@ import java.util.Map;
 public interface GoodMapper {
 
     /**获取商品列表信息*/
-    @Select("SELECT good_id,cat_id,good_name,good_price,good_num,good_big_logo,add_time,upd_time,cat_one_id,cat_two_id FROM `t_goods` WHERE cat_id = #{cat_id}")
-    public List<Good> getGoodsList(Integer cat_id);
+    @Select("SELECT good_id,cat_id,good_name,good_price,good_num,good_big_logo,add_time,upd_time,cat_one_id,cat_two_id,status FROM `t_goods` WHERE cat_id = #{cat_id} and status = '已上架'")
+    List<Good> getGoodsList(Integer cat_id);
 
     @Select("SELECT good_id,cat_id,good_name,good_price,good_big_logo,add_time,upd_time,cat_one_id,cat_two_id FROM `t_goods` WHERE good_id = #{good_id}")
     Good getGoodDetail(Integer good_id);

@@ -14,7 +14,9 @@ import java.util.Map;
 @Repository
 public interface CategoryMapper {
 
-    @Select("SELECT cat_id,cat_name,cat_imgsrc,nav_imgsrc FROM `t_category` where cat_pid = #{catPid}")
+    @Select("SELECT cat_id,cat_name,cat_pid,cat_imgsrc,nav_imgsrc,create_time FROM `t_category` where cat_pid = #{catPid}")
     List<Map<String,Object>> getCatItems(Integer catPid);
 
+    @Select("SELECT cat_id,cat_name,cat_pid,cat_imgsrc,nav_imgsrc,create_time FROM `t_category` where cat_id = #{catId}")
+    List<Map<String, Object>> getCategoryById(String catId);
 }

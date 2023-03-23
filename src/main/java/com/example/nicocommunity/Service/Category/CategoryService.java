@@ -11,4 +11,6 @@ public interface CategoryService {
     List<Map<String,Object>> getCatItems(Integer catPid);
 
     List<Map<String, Object>> getCategory(Integer catPid);
+
+    List<Map<String, Object>> getCategoryById(String catId);
 }
